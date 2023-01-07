@@ -2,6 +2,7 @@ package com.example.cafe.controllers;
 
 import com.example.cafe.model.*;
 import com.example.cafe.services.CafeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class CafeRestController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody User user){
+    public String register(@Valid @RequestBody User user){
         System.out.println(user.getName());
         User userTemp = cafeService.saveUser(user);
         System.out.println(userTemp.getId());

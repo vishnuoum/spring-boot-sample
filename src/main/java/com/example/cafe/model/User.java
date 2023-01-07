@@ -1,6 +1,7 @@
 package com.example.cafe.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "user")
@@ -10,8 +11,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank(message = "Username cannot be null")
     private String username;
+
+    @NotBlank(message = "Phone cannot be null")
     private String phone;
+
+    @NotBlank(message = "Password cannot be null")
     private String password;
 
     public int getId() {
