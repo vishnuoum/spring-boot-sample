@@ -101,4 +101,17 @@ public class CafeService {
         return "Created";
     }
 
+    public User updateUserPhone(int id, String phone) {
+         userRepository.updateUserPhone(id,phone);
+         return userRepository.findById(id).get();
+    }
+
+    public void deleteUser(int id) {
+         userRepository.deleteById(id);
+    }
+
+    public Iterable<User> getAllUsers() {
+         return userRepository.findAll();
+    }
+
 }

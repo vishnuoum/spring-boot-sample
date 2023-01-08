@@ -98,5 +98,22 @@ public class CafeRestController {
         return new ResponseEntity<>("Created", HttpStatus.CREATED);
     }
 
+    @PutMapping("/updateUserPhone")
+    public ResponseEntity<User> updateUserPhone(@RequestParam("id") int id, @RequestParam("phone") String phone) {
+        return new ResponseEntity<User>(cafeService.updateUserPhone(id,phone),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") String id) {
+        System.out.println(id);
+        cafeService.deleteUser(Integer.parseInt(id));
+        return new ResponseEntity<String>("Deleted",HttpStatus.OK);
+    }
+
+    @GetMapping("/getAllUsers")
+    public Iterable<User> getAllUsers() {
+        return cafeService.getAllUsers();
+    }
+
 
 }
