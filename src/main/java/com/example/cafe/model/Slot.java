@@ -1,6 +1,8 @@
 package com.example.cafe.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
 
@@ -12,10 +14,13 @@ public class Slot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank(message = "Label cannot be null")
     private String label;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private Time start;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private Time end;
 
     public int getId() {

@@ -1,19 +1,23 @@
 package com.example.cafe.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "orders")
-public class Orders {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+//    @NotNull(message = "Transaction_id cannot be null")
     private int transaction_id;
 
+    @NotNull(message = "Product_id cannot be null")
     private int product_id;
 
+    @NotNull(message = "Quantity cannot be null")
     private int quantity;
 
     public int getId() {

@@ -4,6 +4,8 @@ import com.example.cafe.model.*;
 import com.example.cafe.services.CafeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -65,5 +67,36 @@ public class CafeRestController {
     public List<TransactionDAO> getTransaction() {
         return cafeService.getTransactionDetails();
     }
+
+    @PostMapping("/addSlot")
+    public ResponseEntity<String> addSlot(@Valid @RequestBody Slot slot) {
+        cafeService.addSlot(slot);
+        return new ResponseEntity<>("Created", HttpStatus.CREATED);
+    }
+
+    @PostMapping("/addCategory")
+    public ResponseEntity<String> addCategory(@Valid @RequestBody Category category) {
+        cafeService.addCategory(category);
+        return new ResponseEntity<>("Created", HttpStatus.CREATED);
+    }
+
+    @PostMapping("/addProduct")
+    public ResponseEntity<String> addProduct(@Valid @RequestBody Product product) {
+        cafeService.addProduct(product);
+        return new ResponseEntity<>("Created", HttpStatus.CREATED);
+    }
+
+    @PostMapping("/addInventory")
+    public ResponseEntity<String> addInventory(@Valid @RequestBody Inventory inventory) {
+        cafeService.addInventory(inventory);
+        return new ResponseEntity<>("Created", HttpStatus.CREATED);
+    }
+
+    @PostMapping("/addTransaction")
+    public ResponseEntity<String> addTransaction(@Valid @RequestBody TransactionDAO transactionDAO) {
+        cafeService.addTransaction(transactionDAO);
+        return new ResponseEntity<>("Created", HttpStatus.CREATED);
+    }
+
 
 }

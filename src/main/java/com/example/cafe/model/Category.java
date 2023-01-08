@@ -1,6 +1,8 @@
 package com.example.cafe.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "category")
@@ -10,8 +12,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank(message = "Label cannot be null")
     private String label;
 
+    @NotNull(message = "Slot_id cannot be null")
     private int slot_id;
 
     public int getId() {
